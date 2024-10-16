@@ -1,0 +1,22 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.sidebar-canvas-container {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 80%;
+}

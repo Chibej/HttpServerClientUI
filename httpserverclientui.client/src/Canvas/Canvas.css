@@ -1,0 +1,102 @@
+.canvas {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    box-sizing: border-box;
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+}
+
+
+.draggable-canvas-item {
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #ab47bc;
+    box-sizing: border-box;
+    cursor: move;
+    transition: opacity 0.2s ease;
+}
+
+.delete-button {
+    position: absolute;
+    font-weight: bold;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+}
+
+.element-title {
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.inline-fields {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.address-input,
+.port-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.address-label {
+    flex: 70%;
+}
+
+.port-label {
+    flex: 30%;
+}
+
+
+.address-input[readonly],
+.port-input[readonly] {
+    background-color: #e0e0e0; 
+    color: #555; 
+    border: 1px solid #ddd; 
+    cursor: not-allowed; 
+}
+
+.large-input {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.grid-cell {
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+}
+
+.grid-cell.highlight {
+    background-color: #a5d6a7;
+}
+
+.grid-cell.overlap {
+    background-color: #ff1744;
+}
