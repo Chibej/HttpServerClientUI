@@ -35,40 +35,6 @@ Before setting up the project, ensure you have the following installed:
 - **Drag-and-drop functionality**: `react-dnd`, `react-dnd-html5-backend` - Enables the drag-and-drop interface for server and client configuration.
 - **Real-time communication**: `@microsoft/signalr` - Facilitates real-time messaging between the HTTP client and server.
 
-## Installation and Setup
-- **Clone the repository:**
-git clone https://github.com/Chibej/HttpServerClientUI.git
-cd your-repo-name
-
-**Backend setup**
-Navigate to the backend project folder:
-cd HttpServerClientUI/Backend
-
-- **Restore the .NET dependencies:**
-dotnet restore
-
-- **Build and run the server:**
-dotnet run
-
-The backend will run at https://localhost:7150.
-
-**Frontend setup**
-Navigate to the React frontend folder:
-cd HttpServerClientUI/Frontend
-
-**Install the dependencies:**
-npm install
-
-**Start the development server:**
-npm run dev
-
-The app will be accessible at https://localhost:5173.
-
-Running the Application
-Starting the backend server: After building, navigate to the published backend directory and run:
-dotnet YourProjectName.dll
-
-Starting the frontend: After building, serve the dist folder using a static server like serve or configure your web server to serve the built files.
 
 ## Features
 
@@ -77,7 +43,7 @@ Starting the frontend: After building, serve the dist folder using a static serv
 - **Save and Load Configurations**: Save your current server and client setup to an SQLite database, and load it automatically when you reopen the app.
 - **Discard Changes**: Reset the current configuration to a default state when needed.
 
-- 
+
 ### Adding and Configuring Servers/Clients
 
 - Drag server and client elements from the sidebar onto the canvas.
