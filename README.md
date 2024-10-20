@@ -43,6 +43,50 @@ Before setting up the project, ensure you have the following installed:
 - **Save and Load Configurations**: Save your current server and client setup to an SQLite database, and load it automatically when you reopen the app.
 - **Discard Changes**: Reset the current configuration to a default state when needed.
 
+- ### Sending Messages
+
+- Enter a message body in the client’s input field and click 'Send' to transmit it to the connected server.
+- The server displays incoming messages with a timestamp in the 'Received' section.
+
+### Saving and Loading Configurations
+
+- Click 'Save' to store the current setup.
+- When the app starts, it automatically loads the last saved configuration.
+
+
+### Application URLs
+
+- **Frontend**: The frontend application runs by default on `http://localhost:5173`.
+- **Backend**: The backend (API) runs by default on `http://localhost:7027`.
+
+### Changing Frontend and Backend URLs
+
+- To change the **frontend URL**, modify the `vite.config.js` file:
+
+  ```javascript
+  // vite.config.js
+  export default {
+      server: {
+          port: 5173 // Change this to your desired port
+      }
+  };
+   ```
+- To change the backend URL, modify the launchSettings.json:
+
+```json
+"profiles": {
+    "httpServerClientUI": {
+        "commandName": "Project",
+        "dotnetRunMessages": true,
+        "applicationUrl": "https://localhost:7027", // Change this to your desired URL and port
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+    }
+}
+```
+
+
 
 ### Adding and Configuring Servers/Clients
 
@@ -61,14 +105,4 @@ Before setting up the project, ensure you have the following installed:
      - Replace `<IP>` with the IP address (e.g., `192.168.1.167`) and `<port>` with the port number (e.g., `5000`).
      - This command grants permission for the application to bind to the specified IP and port.
 - After adding the URL reservation, try starting the server again.
-
-### Sending Messages
-
-- Enter a message body in the client’s input field and click 'Send' to transmit it to the connected server.
-- The server displays incoming messages with a timestamp in the 'Received' section.
-
-### Saving and Loading Configurations
-
-- Click 'Save' to store the current setup.
-- When the app starts, it automatically loads the last saved configuration.
 

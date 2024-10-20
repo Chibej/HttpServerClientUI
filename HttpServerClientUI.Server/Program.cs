@@ -26,20 +26,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("https://192.168.1.167:5173", "https://localhost:5173")
+            policy.WithOrigins(frontendUrl)
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials();
         });
 });
 
-builder.WebHost.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ListenAnyIP(7150, listenOptions =>
-    {
-        listenOptions.UseHttps(); 
-    });
-});
 
 var app = builder.Build();
 

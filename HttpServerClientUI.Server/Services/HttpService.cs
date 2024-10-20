@@ -49,7 +49,6 @@ namespace HttpServerClientUI.Server.Services
             {
                 Content = new StringContent(body)
             };
-            System.Diagnostics.Debug.WriteLine("test");
             var parsedHeaders = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(headers);
 
             if (parsedHeaders.TryGetValue("Content-Type", out var contentType))
