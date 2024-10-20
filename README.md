@@ -40,12 +40,12 @@ Before setting up the project, ensure you have the following installed:
 
 - **Drag-and-Drop Configuration**: Easily configure HTTP servers and clients by dragging them onto a canvas. Set parameters like inbound and outbound addresses and ports.
 - **Real-Time Messaging**: Clients and servers can communicate in real-time using SignalR, allowing for instant data exchange.
-- **Save and Load Configurations**: Save your current server and client setup to an SQLite database, and load it automatically when you reopen the app.
+- **Save and Load Configurations**: Store configurations in SQLite and automatically load them when the app is reopened.
 - **Discard Changes**: Reset the current configuration to a default state when needed.
 
 - ### Sending Messages
 
-- Enter a message body in the client’s input field and click 'Send' to transmit it to the connected server.
+- Enter message in the client’s input field and click 'Send' to transmit it to the connected server.
 - The server displays incoming messages with a timestamp in the 'Received' section.
 
 ### Saving and Loading Configurations
