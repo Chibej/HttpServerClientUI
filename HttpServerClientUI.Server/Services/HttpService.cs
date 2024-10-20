@@ -26,13 +26,8 @@ namespace HttpServerClientUI.Server.Services
                 _listeners[url] = listener;
 
                 Task.Run(() => HandleIncomingRequests(listener));
+            }
 
-                Console.WriteLine($"HTTP server started on {url}");
-            }
-            else
-            {
-                Console.WriteLine($"Server is already running on {url}");
-            }
         }
 
         public void StopServer(string address, int port)
@@ -43,7 +38,6 @@ namespace HttpServerClientUI.Server.Services
                 _listeners[url].Stop();
                 _listeners[url].Close();
                 _listeners.Remove(url);
-                Console.WriteLine($"HTTP server stopped on {url}");
             }
         }
 
@@ -56,14 +50,12 @@ namespace HttpServerClientUI.Server.Services
                 Content = new StringContent(body)
             };
             System.Diagnostics.Debug.WriteLine("test");
-            // Parse headers from string to dictionary
             var parsedHeaders = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(headers);
-            // Handle Content-Type header separately
 
             if (parsedHeaders.TryGetValue("Content-Type", out var contentType))
             {
                 requestMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
-                parsedHeaders.Remove("Content-Type"); // Remove it so we don't add it to regular headers
+                parsedHeaders.Remove("Content-Type"); 
             }
             foreach (var header in parsedHeaders)
             {

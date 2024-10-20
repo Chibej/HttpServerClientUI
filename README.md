@@ -49,6 +49,18 @@ Before setting up the project, ensure you have the following installed:
 - Drag server and client elements from the sidebar onto the canvas.
 - Configure their inbound and outbound settings using the input fields.
 - Attach clients to servers by dragging them close to each other until they snap into place.
+- **If you encounter an "Access is denied" error** when starting a server, you need to add a URL reservation for the IP address and port using the `netsh` command:
+  
+  1. Open Command Prompt as an administrator.
+  2. Run the following command:
+
+     ```bash
+     netsh http add urlacl url=http://<IP>:<port>/ user=Everyone
+     ```
+
+     - Replace `<IP>` with the IP address (e.g., `192.168.1.167`) and `<port>` with the port number (e.g., `5000`).
+     - This command grants permission for the application to bind to the specified IP and port.
+- After adding the URL reservation, try starting the server again.
 
 ### Sending Messages
 
@@ -59,3 +71,4 @@ Before setting up the project, ensure you have the following installed:
 
 - Click 'Save' to store the current setup.
 - When the app starts, it automatically loads the last saved configuration.
+

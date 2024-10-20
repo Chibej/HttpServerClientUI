@@ -5,35 +5,40 @@ const url = import.meta.env.VITE_BASE_URL;
 let connection;
 
 export const handlePlay = async (items, setItems, setIsRunning) => {
-    addLog('Play button clicked - starting servers');
+    addLog('Starting servers');
 
     handleSignalR(setItems);
 
     for (const item of items) {
-
         if (item.elementType === 'Server') {
             if (!item.address || !item.port) {
                 addLog(`Missing address or port for Server ID: ${item.id}`);
                 continue;
             }
+
             try {
                 const response = await fetch(`${url}/start-server`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ address: item.address, port: item.port })
                 });
+
                 if (response.ok) {
                     addLog(`Server started at http://${item.address}:${item.port}`);
                 } else {
-                    addLog(`Failed to start server at http://${item.address}:${item.port}`);
+                    const errorData = await response.json();
+                    const errorMessage = errorData.message || errorData.detail || 'Failed to start server';
+                    addLog(`Failed to start server at http://${item.address}:${item.port}: ${errorMessage}`);
                 }
             } catch (error) {
                 addLog(`Error starting server at http://${item.address}:${item.port}: ${error.message}`);
             }
         }
     }
+
     setIsRunning(true);
 };
+
 
 export const handleSignalR = (setItems) => {
 

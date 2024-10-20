@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins(frontendUrl)
+            policy.WithOrigins("https://192.168.1.167:5173", "https://localhost:5173")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials();
@@ -49,16 +49,28 @@ app.UseStaticFiles();
 
 var httpService = app.Services.GetRequiredService<HttpService>();
 
-app.MapPost("/start-server", async (HttpContext context) =>
+app.MapPost("/start-server", async (HttpContext context, HttpService httpService) =>
 {
     var requestData = await context.Request.ReadFromJsonAsync<StartServerRequest>();
-    if (requestData == null || string.IsNullOrWhiteSpace(requestData.Address) || requestData.Port == 0)
+
+    if (requestData == null || string.IsNullOrWhiteSpace(requestData.Address) || requestData.Port <= 0)
     {
-        return Results.BadRequest("Invalid address or port");
+        return Results.BadRequest(new { success = false, message = "Invalid address or port" });
     }
 
-    httpService.StartServer(requestData.Address, requestData.Port);
-    return Results.Ok($"Server started at http://{requestData.Address}:{requestData.Port}/");
+    try
+    {
+        httpService.StartServer(requestData.Address, requestData.Port);
+        return Results.Ok(new { success = true, message = $"Server started at http://{requestData.Address}:{requestData.Port}/" });
+    }
+    catch (HttpListenerException ex)
+    {
+        return Results.Problem(
+            detail: $"{ex.Message}",
+            statusCode: 500,
+            title: "Server Start Error"
+        );
+    }
 });
 
 
