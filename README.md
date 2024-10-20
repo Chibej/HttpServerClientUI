@@ -25,7 +25,7 @@ Before setting up the project, ensure you have the following installed:
 | `Swashbuckle.AspNetCore`              | 6.4.0    |
 | `Newtonsoft.Json`                     | 13.0.3   |
 | `Microsoft.EntityFrameworkCore.Design`| 8.0.0    |
-|---------------------------------------|----------|
+
 
 ## Key Dependencies
 
@@ -67,18 +67,19 @@ Before setting up the project, ensure you have the following installed:
   // vite.config.js
   export default {
       server: {
-          port: 5173 // Change this to your desired port
+          port: 5173 //Change this to your desired port
       }
   };
    ```
 - To change the backend URL, modify the launchSettings.json:
 
 ```json
+// launchSettings.json
 "profiles": {
     "httpServerClientUI": {
         "commandName": "Project",
         "dotnetRunMessages": true,
-        "applicationUrl": "https://localhost:7027", // Change this to your desired URL and port
+        "applicationUrl": "https://localhost:7027", //Change this to your desired URL and port
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
         }
