@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
-var frontendUrl = builder.Configuration["VITE_BASE_URL"] ?? "https://localhost:5173";
+var frontendUrl = builder.Configuration["URL:frontend_url"];
 // Add services to the container.
 
 builder.Services.AddControllers();
